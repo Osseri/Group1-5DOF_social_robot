@@ -5,7 +5,6 @@
 ***This package includes a social motion, arm, avatar, recharge, navigation.*** 
 
 
-
 > ## Install Guide
 
 1. Make workspace
@@ -28,7 +27,7 @@
    >
    > ​	source ~/.bashrc
 
-3. Install 5DOF-SOCIAL-ROBOT package
+3. Install 5DOF_social_robot package
 
    > cd social_ws/src
    >
@@ -46,10 +45,8 @@
 
 ### GAZEBO 
 
-~~
 $ roslaunch social_robot_arm_sdk social_robot_arm_sdk_for_gazebo.launch
 $ roslaunch social_robot_gazebo social_robot_gazebo.launch 
-~~
 
 재생버튼을 클릭해야 실행
 
@@ -57,17 +54,13 @@ $ roslaunch social_robot_gazebo social_robot_gazebo.launch
 
 ### GUI
 
-~~
 $ rosrun social_robot_arm_gui social_robot_arm_gui
-~~
-
-
 
 ---
 
 ### MOTION MAKER
 
-~~
+
 1. 로봇 팔 토크 release
 	$ rosrun social_motion_maker social_arm_torque_release
 2. 로봇 팔 조인트 save
@@ -76,8 +69,6 @@ $ rosrun social_robot_arm_gui social_robot_arm_gui
 3. 로봇 팔 모션 make
 	$ rosrun social_motion_maker social_motion_maker [motion_name]
 	ex) rosrun social_motion_maker social_motion_maker test 
-~~
-
 
 
 * Arm 파일 생성
@@ -108,12 +99,12 @@ $ rosrun social_robot_arm_gui social_robot_arm_gui
 
 ### MOTION PLAYER
 
-~~ 
+ 
 $ roslaunch social_motion_player motion.launch
 $ rosservice call /social_motion_player/play_motion "file_name: '[motion_name]'
 text: '[text to speech]'
 with_home: false"
-~~
+
 
 ---
 
@@ -168,13 +159,13 @@ with_home: false"
 
 ### SOCIAL RECHARGE
 
-~~
+
 $ rosrun social_recharge social_recharge_node
-~~
+
 
 or, 런치파일을 만들어 주행 파라미터 값을 조절
 
-~~
+
 <launch>
         <node name="social_recharge_node" pkg="social_recharge" type="social_recharge_node" output="screen">
                 <param name="tarket_distance" value="0.4"/>
@@ -187,14 +178,14 @@ or, 런치파일을 만들어 주행 파라미터 값을 조절
                 <param name="leave_distance" value="0.7"/>
         </node>
 </launch>     
-~~
 
-~~
+
+
 1. leave charger
 	$ rosservice call /social_recharge/leave_station "{}"
 2. dock charger
 	$ rosservice call /social_recharge/dock_on_station "{}"
-~~
+
 
 
 
@@ -202,7 +193,7 @@ or, 런치파일을 만들어 주행 파라미터 값을 조절
 
 ### SOCIAL NAVIGATION
 
-~~
+
 $ roslaunch robocare_navigation robocare_navigation.launch
-~~
+
 
