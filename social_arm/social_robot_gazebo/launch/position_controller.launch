@@ -1,0 +1,31 @@
+<?xml version="1.0" ?>
+<launch>
+
+  <!-- Load joint controller configurations from YAML file to parameter server -->
+  <rosparam file="$(find social_robot_gazebo)/config/position_controller.yaml" command="load"/>
+
+  <!-- load the controllers -->
+  <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+        output="screen" ns="/social_robot" args="joint_state_controller
+                                                 Waist_Roll_position
+                                                 Waist_Pitch_position
+                                                 Head_Yaw_position
+                                                 Head_Pitch_position
+                                                 LShoulder_Pitch_position
+                                                 LShoulder_Roll_position
+                                                 LElbow_Pitch_position
+                                                 LElbow_Yaw_position
+                                                 LWrist_Pitch_position
+                                                 LFinger_position
+                                                 RShoulder_Pitch_position
+                                                 RShoulder_Roll_position
+                                                 RElbow_Pitch_position
+                                                 RElbow_Yaw_position
+                                                 RWrist_Pitch_position
+                                                 RFinger_position
+                                                 Waist_Roll_position
+                                                 Waist_Pitch_position
+                                                 Head_Yaw_position
+                                                 Head_Pitch_position"/>
+
+</launch>

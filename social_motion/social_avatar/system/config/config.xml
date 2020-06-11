@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="EUC-KR"?>
+
+<config>
+	<param name="schedule_api" value="http://labs.robocare.io:42537/api/schedules/" />
+
+	<param name="SPEAKER_ID" value="2"/>
+	
+	<!--  gameserver host ip, port -->
+	
+	<param name="game.server.ip" value="127.0.0.1"/>
+	<param name="game.server.port" value="5000"/>
+	<param name="game.server.data.port" value="7979"/>
+	<!--  0 : mock mode     otherwise : realmode -->
+	<param name="game.server.mode" value="1"/>
+	<param name="game.server.test" value="0"/> 
+	<param name="game.client.mode" value="1"/>
+	<param name="game.robot.mode" value="1"/>
+	<param name="game.db.mode" value="1"/>
+	<param name="game.kinect.mode" value="0"/>
+	<param name="game.behavior.log" value="1"/>
+	<param name="game.face.recog" value="1"/>
+	<param name="avatar.gray.seconds" value="900"/>
+ 	
+</config>

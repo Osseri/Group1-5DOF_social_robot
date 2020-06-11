@@ -1,0 +1,19 @@
+# time parameter
+
+mov_time : 0.5	# movement time
+
+# target pose [deg]
+
+tar_pose :
+  LShoulder_Pitch  : 0
+  LShoulder_Roll   : -80
+  LElbow_Pitch     : 0
+  LElbow_Yaw       : 0
+  LWrist_Pitch     : 0
+  LFinger          : -0
+  RShoulder_Pitch  : -90
+  RShoulder_Roll   : -60
+  RElbow_Pitch     : 90
+  RElbow_Yaw       : 5
+  RWrist_Pitch     : 120
+  RFinger          : -0

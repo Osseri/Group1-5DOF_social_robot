@@ -1,0 +1,15 @@
+#!/usr/bin/env python
+#-*- coding:utf-8 -*-
+
+import sys
+reload(sys)
+sys.setdefaultencoding('utf8')
+
+import rospy
+
+from social_motion_player.executor import Executor
+
+if __name__ == '__main__':
+    rospy.init_node('SOCAIL_MOTION_PLAYER_NODE')
+    e = Executor()
+    rospy.spin()

@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+
+<launch>
+	<!-- robot launch-->
+	<!-- <node name="rosseiral_core" pkg="rosserial_python" type="serial_node.py" output="screen">
+        	<param name="port" type="string" value="/dev/ttyACM0" />
+        	<param name="baud" type="int" value="57600" />
+	</node> -->
+	
+	
+	<!-- urg_node launch -->
+    <include file="$(find rplidar_ros)/launch/double_lidar.launch"/>
+	
+	<!-- odom launch -->
+    <include file="$(find robocare_frame)/launch/robocare_frame.launch"/>
+
+	<!-- laser launch-->
+    <node pkg="tf" type="static_transform_publisher" name="hukuyo_broadcaster" args="0.14 0 0.28 0 0 0 1 base_link laser 100" />
+	<!--
+	<node pkg="camera_to_laser" type="camera_to_laser" name="camera_to_laser" />
+	-->
+	<!-- laser & astra fusion  -->	
+<!--        <node pkg="robocare_navigation" type="scan_fusion" name="scan_fusion" />-->
+
+    <!--	
+        <node pkg="plane_extractor" type="plane_extractor" name="plane_extractor">
+                <param name="frame_id" value="astra"/>
+                <param name="min_x" value="0.5"/>
+                <param name="max_x" value="1.5"/>
+                <param name="min_y" value="-0.3"/>
+                <param name="max_y" value="0.3"/>
+                <param name="min_z" value="-0.5"/>
+                <param name="max_z" value="1.5"/>
+        </node>
+	-->
+	<!-- Map Server Amcl launch-->
+	<node name="map_server_amcl" pkg="map_server" type="map_server" args="$(find robocare_navigation)/maps/amcl.yaml">
+		<!-- Map Topic 변경 -->
+		<remap from="map" to="map_amcl"/>
+		<!-- Map Topic 변경 -->
+		<remap from="map_metadata" to="map_metadata_amcl"/>
+		<remap from="map_reload" to="map_reload_amcl"/>	<!-- Map Topic 변경 -->
+		<remap from="static_map" to="static_map_amcl"/>	<!-- Map Service 변경 -->
+	</node>
+	
+	<!-- Map Server cost launch-->
+	<node name="map_server_cost" pkg="map_server" type="map_server" args="$(find robocare_navigation)/maps/cost.yaml">
+		<!-- <remap from="map" to="map_cost" />
+		<remap from="map_metadata" to="map_metadata_cost" />
+		<remap from="map_reload" to="map_reload_cost" />
+		<remap from="static_map" to="static_map_cost" /> -->
+   </node>	
+	
+	<!-- Amcl launch-->
+	<include file="$(find robocare_navigation)/param/amcl.xml"/>	
+	
+	<!-- Move Base launch-->
+	<include file="$(find robocare_navigation)/param/move_base.xml"/>
+
+	<!-- escape launch -->
+	<node name="robocare_navigation" pkg="robocare_navigation" type="robocare_navigation" output="screen">
+			<param name="escape_dead_zone" value="true"/>
+			<param name="laser_frame" value="laser"/>
+			<param name="range_max" value="5.0"/>
+			<param name="robot_radius" value="0.35"/>
+	</node>
+
+</launch>

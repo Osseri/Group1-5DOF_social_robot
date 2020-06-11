@@ -1,0 +1,123 @@
+<?xml version="1.0" ?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <!-- head -->
+  <xacro:macro name="social_robot_head" params="parent">
+
+  <!-- head yaw joint -->
+  <joint name="Head_Yaw" type="revolute">
+    <origin
+      xyz="0 0.326000000000007 0.0119990710410899"
+      rpy="0 0 0" />
+    <parent
+      link="${parent}" />
+    <child
+      link="Head_Yaw" />
+    <axis
+      xyz="0 -1 0" />
+    <limit effort="30" velocity="1.57" lower="-1.57" upper="1.57" />
+    <safety_controller k_velocity="1.57" k_position="15" soft_lower_limit="-1.57" soft_upper_limit="1.57" />
+  </joint>
+  <xacro:insert_transmission name="Head_Yaw" />
+
+  <!-- head yaw link -->
+  <link name="Head_Yaw">
+    <inertial>
+      <origin
+        xyz="-3.49815670899666E-08 0.0455597536621785 0.00282302245767964"
+        rpy="0 0 0" />
+      <mass
+        value="0.0486497311616148" />
+      <inertia
+        ixx="2.66093638537384E-05"
+        ixy="6.0429663771692E-12"
+        ixz="-5.94440616689778E-11"
+        iyy="2.63371860067501E-05"
+        iyz="2.67738652169337E-06"
+        izz="2.7217784725666E-07" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://social_robot_description/meshes/Head_Yaw.stl" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.796078431372549 0.823529411764706 0.937254901960784 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://social_robot_description/meshes/Head_Yaw.stl" />
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- head pitch joint -->
+  <joint name="Head_Pitch" type="revolute">
+    <origin
+      xyz="0 0.0680000000000001 0"
+      rpy="0 0 0" />
+    <parent
+      link="Head_Yaw" />
+    <child
+      link="Head_Pitch" />
+    <axis
+      xyz="-1 0 0" />
+    <limit effort="30" velocity="1.57" lower="-0.348" upper="0.348" />
+    <safety_controller k_velocity="1.57" k_position="15" soft_lower_limit="-0.348" soft_upper_limit="0.348" />
+  </joint>
+  <xacro:insert_transmission name="Head_Pitch" />
+
+  <!-- head pitch link -->
+  <link name="Head_Pitch">
+    <inertial>
+      <origin
+        xyz="0.00579062274498662 0.0936778317792072 0.00931349998338522"
+        rpy="0 0 0" />
+      <mass
+        value="0.662230447574724" />
+      <inertia
+        ixx="0.00300992272201838"
+        ixy="-0.000195456971244606"
+        ixz="4.73982736539203E-05"
+        iyy="0.00213791585174022"
+        iyz="0.00026281169161505"
+        izz="0.00230393404414791" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://social_robot_description/meshes/Head_Pitch.stl" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://social_robot_description/meshes/Head_Pitch.stl" />
+      </geometry>
+    </collision>
+  </link>
+
+  </xacro:macro>
+
+</robot>

@@ -1,0 +1,7 @@
+string file_name
+string text
+bool with_home
+---
+uint8 RESULT_FAILED = 0
+uint8 RESULT_SUCCESS = 1
+uint8 result

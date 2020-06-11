@@ -1,0 +1,16 @@
+<launch>
+    <include file="$(find social_robot_arm_sdk)/launch/social_robot_arm_sdk.launch" />
+
+    <node name="ros_serial" pkg="rosserial_python" type="serial_node.py" output="screen">
+        <param name="port" value="/dev/ttyACM0"/>
+        <param name="baud" value="57600"/>
+    
+    </node>
+    
+    <node name="social_robot_arm_gui" pkg="social_robot_arm_gui" type="social_robot_arm_gui" />
+    <node name="player" pkg="social_motion_player" type="social_motion_player" />
+    <node name="avatar" pkg="social_avatar" type="social_avatar" />
+    <node name="tts" pkg="robocare_tts" type="robocare_tts" />
+    <node name="sound" pkg="robocare_sound" type="sound_node" />
+
+</launch>

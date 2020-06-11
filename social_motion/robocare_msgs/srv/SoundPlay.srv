@@ -1,0 +1,8 @@
+string filepath
+---
+# Sound result constants
+uint8 SOUND_RESULT_DONE = 0
+uint8 SOUND_RESULT_FILE_NOT_FOUND = 1
+uint8 SOUND_RESULT_FAILED = 2
+
+uint8 sound_result

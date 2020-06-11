@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+
+<launch>	  
+	<!-- robot launch-->
+        <node name="rosseiral_core" pkg="rosserial_python" type="serial_node.py" output="screen">
+                <param name="port" type="string" value="/dev/ttyACM0" />
+                <param name="baud" type="int" value="57600" />
+        </node>
+
+ <!-- odom launch -->
+        <include file="$(find robocare_frame)/launch/robocare_frame.launch"/>
+
+       <!-- urg_node launch -->
+    <include file="$(find rplidar_ros)/launch/double_lidar.launch"/>
+
+        <!-- laser launch-->
+        <node pkg="tf" type="static_transform_publisher" name="hukuyo_broadcaster" args="0.14 0 0.28 0 0 0 1 base_link laser 100" />
+
+        <!-- 3D Depth launch-->
+        <node pkg="tf" type="static_transform_publisher" name="astra_broadcaster" args="0.108 0 1.144 0 0 0 1 base_link astra 100" />
+
+        <!-- laser & astra fusion  -->
+        <node pkg="robocare_navigation" type="scan_fusion" name="scan_fusion" />
+
+
+  	<include file="$(find robocare_navigation)/param/slam_gmapping.xml"/>
+</launch>

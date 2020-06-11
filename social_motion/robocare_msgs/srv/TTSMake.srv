@@ -1,0 +1,9 @@
+string text
+string filepath
+---
+# result constants
+uint8 TTS_RESULT_SUCCESS = 0
+uint8 TTS_RESULT_FAILED = 1
+
+uint8 tts_result
+TTSViseme[] tts_viseme_array

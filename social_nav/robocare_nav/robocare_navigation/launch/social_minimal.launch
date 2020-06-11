@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+
+<launch>	
+	<node name="ros_serial" pkg="rosserial_python" type="serial_node.py" output="screen">
+		<param name="port" value="/dev/ttyACM0"/>
+		<param name="baud" value="115200"/>
+	</node>
+
+	<!-- laser launch-->	
+	<node pkg="tf" type="static_transform_publisher" name="hukuyo_broadcaster" args="0.14 0 0.28 0 0 0 1 base_link laser 100" />
+	<node name="urg_node" pkg="urg_node" type="urg_node" output="screen">
+    	<param name="ip_address" value=""/>
+    	<param name="serial_port" value="/dev/ttyACM1"/>
+    	<param name="serial_baud" value="115200"/>
+    	<param name="frame_id" value="laser"/>
+    	<param name="calibrate_time" value="true"/>
+    	<param name="publish_intensity" value="false"/>
+    	<param name="publish_multiecho" value="false"/>
+    	<param name="angle_min" value="-1.5707963"/>
+    	<param name="angle_max" value="1.5707963"/>
+	</node>		
+	
+	<!-- 3D Depth launch-->
+	<node pkg="tf" type="static_transform_publisher" name="astra_broadcaster" args="0.108 0 1.144 0 0 0 1 base_link astra 100" />		
+	<node pkg="robocare_navigation" type="scan_fusion" name="scan_fusion" />		
+	<node pkg="plane_extractor" type="plane_extractor" name="plane_extractor">
+		<param name="frame_id" value="astra"/>
+		<param name="min_x" value="0.5"/>
+		<param name="max_x" value="3.5"/>
+		<param name="min_y" value="-1.5"/>
+		<param name="max_y" value="1.5"/>
+		<param name="min_z" value="-1.0"/>
+		<param name="max_z" value="0.5"/>		
+	</node>	
+
+	<!-- Odom launch -->
+	<node pkg="robocare_frame" type="robocare_frame" name="robocare_frame"/>			
+</launch>

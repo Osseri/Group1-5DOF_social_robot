@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+
+<launch>	
+	
+	<node pkg="robocare_frame" type="robocare_frame" name="robocare_frame"/>
+</launch>

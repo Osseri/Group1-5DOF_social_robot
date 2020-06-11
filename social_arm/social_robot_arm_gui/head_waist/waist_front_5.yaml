@@ -1,0 +1,11 @@
+# time parameter
+
+mov_time : 1	# movement time
+
+# target pose [deg]
+
+tar_pose :
+  Waist_Roll   : 0
+  Waist_Pitch  : 5
+  Head_Yaw     : 0
+  Head_Pitch   : -0

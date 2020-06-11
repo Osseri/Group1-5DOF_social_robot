@@ -1,0 +1,28 @@
+<launch>
+  <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen"> 
+  		<!--Move Base-->
+  		<rosparam file="$(find robocare_navigation)/param/move_base/move_base_params.yaml" command="load" />
+  
+		<!--Cost Map-->
+		<rosparam file="$(find robocare_navigation)/param/cost_map/costmap_global_common_params.yaml" command="load" ns="global_costmap" />
+		<rosparam file="$(find robocare_navigation)/param/cost_map/costmap_local_common_params.yaml" command="load" ns="local_costmap" />
+		<rosparam file="$(find robocare_navigation)/param/cost_map/local_costmap_params.yaml" command="load" />
+		<rosparam file="$(find robocare_navigation)/param/cost_map/global_costmap_params.yaml" command="load" />
+    
+	    	<!--Planner-->		
+		<rosparam file="$(find robocare_navigation)/param/planner/global_planner_params.yaml" command="load" />
+		<!--<rosparam file="$(find hccb_navigation)/param/planner/navfn_global_planner_params.yaml" command="load" /> -->  
+		<rosparam file="$(find robocare_navigation)/param/planner/dwa_local_planner_params.yaml" command="load" />
+		<!--<rosparam file="$(find hccb_navigation)/param/planner/base_local_planner_params.yaml" command="load" /> -->		   
+	
+		<!-- Recovery Begavior -->
+		<param name="recovery_behavior_enabled" value="false" />
+		<param name="recovery_behaviour_enabled" value="false" />
+		<param name="clearing_rotation_allowed" value="false" />
+		
+		<!-- Map Topic 변경 -->
+		<!--remap from="map" to="/ros/map"/-->       <!-- Map Topic 변경 -->
+		<remap from="cmd_vel" to="/ros/cmd_vel"/>
+	</node>  
+</launch>
+

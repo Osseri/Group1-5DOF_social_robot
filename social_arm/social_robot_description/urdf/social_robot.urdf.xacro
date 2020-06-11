@@ -1,0 +1,175 @@
+<?xml version="1.0" ?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="social_robot">
+
+  <xacro:include filename="$(find social_robot_description)/urdf/social_robot.structure.head.xacro" />
+  <xacro:include filename="$(find social_robot_description)/urdf/social_robot.structure.larm.xacro" />
+  <xacro:include filename="$(find social_robot_description)/urdf/social_robot.structure.rarm.xacro" />
+
+  <xacro:include filename="$(find social_robot_description)/urdf/social_robot.gazebo.xacro" />
+  <xacro:include filename="$(find social_robot_description)/urdf/social_robot.transmissions.xacro" />
+
+  <!-- base link -->
+  <link name="base_link">
+    <inertial>
+      <origin
+        xyz="8.22653618212244E-06 0.160934490597598 -0.00189151304431439"
+        rpy="0 0 0" />
+      <mass
+        value="9.16468890396806" />
+      <inertia
+        ixx="0.368108530059628"
+        ixy="-1.83664773050428E-06"
+        ixz="5.85398093538166E-05"
+        iyy="0.219775236597536"
+        iyz="0.00269873784897349"
+        izz="0.338690676992171" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://social_robot_description/meshes/base_link.stl" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://social_robot_description/meshes/base_link.stl" />
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- body -->
+
+  <!-- waist roll joint -->
+  <joint name="Waist_Roll" type="continuous">
+    <origin
+      xyz="0 0 0.579000000143115"
+      rpy="1.5707963267949 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="Waist_Roll" />
+    <axis
+      xyz="0 0 -1" />
+    <limit effort="30" velocity="1.57" lower="-0.348" upper="0.348" />
+    <safety_controller k_velocity="1.57" k_position="15" soft_lower_limit="-0.348" soft_upper_limit="0.348" />
+  </joint>
+  <xacro:insert_transmission name="Waist_Roll" />
+
+  <!-- waist roll link -->
+  <link name="Waist_Roll">
+    <inertial>
+      <origin
+        xyz="-1.6981669084292E-15 0 -9.28958911114441E-07"
+        rpy="0 0 0" />
+      <mass
+        value="1.43675504024173" />
+      <inertia
+        ixx="0"
+        ixy="0"
+        ixz="0"
+        iyy="0"
+        iyz="0"
+        izz="0" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://social_robot_description/meshes/Waist_Roll.stl" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://social_robot_description/meshes/Waist_Roll.stl" />
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- waist pitch joint -->
+  <joint name="Waist_Pitch" type="continuous">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="Waist_Roll" />
+    <child
+      link="Waist_Pitch" />
+    <axis
+      xyz="-1 0 0" />
+    <limit effort="30" velocity="1.57" lower="-0.523" upper="0.523" />
+    <safety_controller k_velocity="1.57" k_position="15" soft_lower_limit="-0.523" soft_upper_limit="0.523" />
+  </joint>
+  <xacro:insert_transmission name="Waist_Pitch" />
+
+  <!-- waist pitch link -->
+  <link name="Waist_Pitch">
+    <inertial>
+      <origin
+        xyz="1.46815175677656E-05 0.101257114843982 0.0180187762940287"
+        rpy="0 0 0" />
+      <mass
+        value="2.19862483991908" />
+      <inertia
+        ixx="0.0366715993224349"
+        ixy="1.89411704411262E-05"
+        ixz="8.21451328972728E-06"
+        iyy="0.00763973413946523"
+        iyz="-0.00421453222211104"
+        izz="0.0305991863005127" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://social_robot_description/meshes/Waist_Pitch.stl" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://social_robot_description/meshes/Waist_Pitch.stl" />
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- head link -->
+  <xacro:social_robot_head parent="Waist_Pitch" />
+
+  <!-- arm link -->
+  <xacro:social_robot_l_arm parent="Waist_Pitch" />
+  <xacro:social_robot_r_arm parent="Waist_Pitch" />
+
+</robot>

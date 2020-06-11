@@ -1,0 +1,16 @@
+<?xml version="1.0" ?>
+
+<launch>    
+
+    <param name="gazebo"                   value="false"     type="bool"/>
+    <param name="gazebo_robot_name"        value="social_robot" />
+
+    <param name="offset_table"             value="$(find social_robot_arm_sdk)/config/offset.yaml"/>
+    <param name="robot_file_path"          value="$(find social_robot_arm_sdk)/config/SOCIAL_ROBOT_ARM.robot"/>
+    <param name="init_file_path"           value="$(find social_robot_arm_sdk)/config/dxl_init.yaml"/>
+      
+    <!-- Manipulator Manager -->
+    <node name="social_robot_arm_sdk" pkg="social_robot_arm_sdk" type="social_robot_arm_sdk" output="screen"/>
+    
+</launch>
+

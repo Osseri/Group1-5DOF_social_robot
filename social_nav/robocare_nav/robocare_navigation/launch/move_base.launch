@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+
+<launch>		
+	<include file="$(find robocare_navigation)/param/move_base.xml"/>		
+</launch>

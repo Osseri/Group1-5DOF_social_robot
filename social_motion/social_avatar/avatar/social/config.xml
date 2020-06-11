@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<config version="1.0">
+	<platforms>
+		<platform name="TYPE1">
+			<ip>127.0.0.1</ip>
+			<!-- <ip>115.144.228.47</ip> -->
+			<port>5000</port>
+		</platform>
+	</platforms>
+	<target>TYPE1</target>
+	<use_tm>true</use_tm>
+</config>

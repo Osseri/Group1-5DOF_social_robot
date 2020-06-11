@@ -1,0 +1,26 @@
+offset:
+  LShoulder_Pitch: 0
+  LShoulder_Roll: 0
+  LElbow_Pitch: 0
+  LElbow_Yaw: 0
+  LWrist_Pitch: 0
+  LFinger     : 0
+  RShoulder_Pitch: 0
+  RShoulder_Roll: 0
+  RElbow_Pitch: 0
+  RElbow_Yaw: 0
+  RWrist_Pitch: 0
+  RFinger     : 0
+init_pose_for_offset_tuner:
+  LShoulder_Pitch: 0
+  LShoulder_Roll: 0
+  LElbow_Pitch: 0
+  LElbow_Yaw: 0
+  LWrist_Pitch: 0
+  LFinger     : 0
+  RShoulder_Pitch: 0
+  RShoulder_Roll: 0
+  RElbow_Pitch: 0
+  RElbow_Yaw: 0
+  RWrist_Pitch: 0
+  RFinger     : 0

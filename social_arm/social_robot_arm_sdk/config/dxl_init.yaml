@@ -1,0 +1,52 @@
+LShoulder_Pitch :
+   return_delay_time     : 1
+   operating_mode        : 3
+
+LShoulder_Roll :
+   return_delay_time     : 1
+   operating_mode        : 3
+
+LElbow_Pitch :
+   return_delay_time     : 1
+   operating_mode        : 3
+   drive_mode            : 1
+
+LElbow_Yaw :
+   return_delay_time     : 1
+   operating_mode        : 3
+
+LWrist_Pitch :
+   return_delay_time     : 1
+   operating_mode        : 3
+   drive_mode            : 1
+
+LFinger :
+   return_delay_time     : 1
+   operating_mode        : 3
+
+RShoulder_Pitch :
+   return_delay_time     : 1
+   operating_mode        : 3
+
+RShoulder_Roll :
+   return_delay_time     : 1
+   operating_mode        : 3
+
+RElbow_Pitch :
+   return_delay_time     : 1
+   operating_mode        : 3
+   drive_mode            : 1
+
+RElbow_Yaw :
+   return_delay_time     : 1
+   operating_mode        : 3
+
+RWrist_Pitch :
+   return_delay_time     : 1
+   operating_mode        : 3
+   drive_mode            : 1
+
+RFinger :
+   return_delay_time     : 1
+   operating_mode        : 3
+   drive_mode            : 1

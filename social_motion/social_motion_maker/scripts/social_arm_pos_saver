@@ -1,0 +1,6 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+import social_motion_maker
+
+social_motion_maker.save()

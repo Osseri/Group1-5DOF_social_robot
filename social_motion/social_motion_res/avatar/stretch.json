@@ -1,0 +1,12 @@
+{
+    "avatar":[
+        {
+            "time": 0.1,
+            "avatar": "6"
+        },
+        {
+            "time": 3.5,
+            "avatar": "6-end"
+        }
+    ]
+}

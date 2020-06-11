@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<package>
+  <name>social_avatar</name>
+  <version>0.0.1</version>
+  <description>The social_avatar package</description>
+
+  <maintainer email="skkang@robocare.co.kr">skkang</maintainer>
+  <license>ROBOCARE</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <export>
+  </export>
+</package>

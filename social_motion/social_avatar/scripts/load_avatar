@@ -1,0 +1,31 @@
+#!/usr/bin/env python
+#-*- coding:utf-8 -*-
+
+import os
+import time
+import thread
+import rospkg
+
+def start_avatar(tmp):
+    rospack = rospkg.RosPack()
+    sa_dir = rospack.get_path('social_avatar')
+    load_cmd = sa_dir+'/player/flashplayer '+sa_dir+'/avatar/social/main.swf'
+    os.system(load_cmd)
+
+thread.start_new_thread(start_avatar, ('', ))
+line_len = 0
+while line_len <= 0:
+    cmd = 'wmctrl -l | grep "Adobe Flash"'
+    p = os.popen(cmd)
+    lines = p.readlines()
+    print lines
+    line_len = len(lines)
+    print 'line_len '+ str(line_len)
+
+time.sleep(0.3)
+os.system('wmctrl -r "Adobe Flash Player 28,0,0,161" -b toggle,fullscreen')
+time.sleep(0.1)
+os.system('wmctrl -r "Adobe Flash Player 28,0,0,161" -e "0,1300,73,400,200"' )
+#os.system('wmctrl -r "Adobe Flash Player 28,0,0,161" -e "0,100,100,800,400"' )
+time.sleep(0.1)
+os.system('wmctrl -r "Adobe Flash Player 28,0,0,161" -b toggle,fullscreen')

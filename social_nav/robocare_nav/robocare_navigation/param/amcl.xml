@@ -1,0 +1,54 @@
+<launch>
+<!-- 
+  Example amcl configuration. Descriptions of parameters, as well as a full list of all amcl parameters, can be found at http://www.ros.org/wiki/amcl.
+-->	
+        <node pkg="amcl" type="amcl" name="amcl" respawn="false" output="screen" args="scan:=/urg_node/scan"> 	<!-- To localize using laser data on the base_scan topic!-->
+		<param name="use_sim_time" value="true"/> 
+		<!--  Map and Sensor -->		
+		<remap from="map" to="map_amcl"/>	<!-- Map Topic 변경 -->
+		<param name="use_map_topic" value="true"/>			<!--토픽을 통해서 맵을 계속 수신함.  -->
+		<param name="first_map_only" value="false"/>			<!--맵을 계속 업데이트함.  -->
+		<!--remap from="scan" to="urg_node/scan"/-->
+		<!--  Set init Pose -->
+		<param name="initial_pose_x" value="0.05"/>
+		<param name="initial_pose_y" value="0.05"/>
+		<param name="initial_pose_a" value="0.01"/>
+  	
+		<!-- Odometry -->  
+		<param name="odom_model_type" value="omni"/>	<!--휠 타입 -->
+		<param name="odom_alpha1" value="0.2"/>	<!-- Default 0.2 Specifies the expected noise in odometry's rotation estimate from the rotational component of the robot's motion.--> 
+		<param name="odom_alpha2" value="0.2"/> <!-- Default 0.2 Specifies the expected noise in odometry's rotation estimate from translational component of the robot's motion.-->
+		<param name="odom_alpha3" value="0.8"/> <!-- Default 0.2 Specifies the expected noise in odometry's translation estimate from the translational component of the robot's motion.-->
+		<param name="odom_alpha4" value="0.2"/> <!-- Default 0.2 Specifies the expected noise in odometry's translation estimate from the rotational component of the robot's motion.-->
+		<param name="odom_alpha5" value="0.1"/>	<!-- Default 0.2 Translation-related noise parameter (only used if model is "omni").-->
+		<param name="odom_frame_id" value="odom"/> <!-- Default "odoom" Which frame to use for odometry.-->			
+ 
+		<!-- Particles -->
+		<param name="min_particles" value="500"/>			<!-- Default 100  최소허용 파티클 -->
+		<param name="max_particles" value="5000"/>			<!-- Default 5000 최대허용 파티클 -->
+		<param name="kld_err" value="0.05"/>					<!-- default: 0.01 실제 분포와 추정된 분포사이의 최대 에러 -->
+		<param name="kld_z" value="0.99"/>					<!-- default: 0.99 Upper standard normal quantile for (1 - p), where p is the probability that the error on the estimated distrubition will be less than kld_err. -->
+		<param name="update_min_d" value="0.2"/>			<!-- default: 0.2 meters 필터 업데이트 수행 이전에 요구되는 전후좌우 이동(미터단위)  -->
+		<param name="update_min_a" value="0.5"/>			<!-- default: π/6.0 radians 필터 업데이트 수행 이전에 요구되는 회전 운동(라디안 단위)  -->
+		<param name="resample_interval" value="0.5"/>		<!-- default: 2 Number of filter updates required before resampling. -->  
+		<param name="transform_tolerance" value="0.2" />	<!-- default: 0.1 seconds, Time with which to post-date the transform that is published, to indicate that this transform is valid into the future.-->
+		<param name="recovery_alpha_slow" value="0.0"/>	<!-- default: 0.0 (disabled) Exponential decay rate for the slow average weight filter, used in deciding when to recover by adding random poses. A good value might be 0.001. -->
+		<param name="recovery_alpha_fast" value="0.0"/>	<!-- default: 0.0 (disabled) Exponential decay rate for the fast average weight filter, used in deciding when to recover by adding random poses. A good value might be 0.1. -->
+		<param name="gui_publish_rate" value="2.0"/>		<!-- default: -1.0hz Maximum rate (Hz) at which scans and paths are published for visualization, -1.0 to disable. -->
+		   
+		<!-- Laser -->  
+		<!--<param name="laser_min_range" value="-1.0"/> -->  <!-- default: -1.0 Minimum scan range to be considered; -1.0 will cause the laser's reported minimum range to be used. -->
+		<!--<param name="laser_max_range" value="-1.0"/> -->  <!-- default: -1.0 Maximum scan range to be considered; -1.0 will cause the laser's reported maximum range to be used. -->
+		<param name="laser_max_beams" value="30"/>	<!-- default: 30 How many evenly-spaced beams in each scan to be used when updating the filter. -->
+		<param name="laser_z_hit" value="0.5"/>		<!-- default: 0.95 Mixture weight for the z_hit part of the model. -->
+		<param name="laser_z_short" value="0.05"/>	<!-- default: 0.1  Mixture weight for the z_short part of the model. -->
+		<param name="laser_z_max" value="0.05"/>	<!-- default: 0.05 Mixture weight for the z_max part of the model. -->
+		<param name="laser_z_rand" value="0.5"/>	<!-- default: 0.05 Mixture weight for the z_rand part of the model. -->
+		<param name="laser_sigma_hit" value="0.2"/>	<!-- default: 0.2 meters Standard deviation for Gaussian model used in z_hit part of the model. --> 
+		<param name="laser_lambda_short" value="0.1"/>	<!-- default: 0.1 Exponential decay parameter for z_short part of model. -->
+		<param name="laser_likelihood_max_dist" value="2.0"/>	<!-- default: 2.0 meters Maximum distance to do obstacle inflation on map, for use in likelihood_field model. -->			
+		<param name="laser_model_type" value="likelihood_field"/>	<!-- default: "likelihood_field" Which model to use, either beam, likelihood_field, or likelihood_field_prob (same as likelihood_field but incorporates the beamskip feature, if enabled).-->
+		<!-- <param name="laser_model_type" value="beam"/> -->		  
+	</node>
+</launch>
+

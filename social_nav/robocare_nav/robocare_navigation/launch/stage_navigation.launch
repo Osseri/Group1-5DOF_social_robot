@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+
+<launch>
+	<!-- Map Server Amcl launch-->
+	<node name="map_server_amcl" pkg="map_server" type="map_server" args="$(find robocare_navigation)/maps/amcl.yaml">
+		<remap from="map" to="map_amcl"/>	<!-- Map Topic 변경 -->
+		<remap from="map_metadata" to="map_metadata_amcl"/>	<!-- Map Topic 변경 -->
+		<remap from="map_reload" to="map_reload_amcl"/>	<!-- Map Topic 변경 -->
+		<remap from="static_map" to="static_map_amcl"/>	<!-- Map Service 변경 -->
+	</node>
+	
+	<!-- Map Server cost launch-->
+	<node name="map_server_cost" pkg="map_server" type="map_server" args="$(find robocare_navigation)/maps/cost.yaml"/>
+			
+	<!-- Amcl launch-->
+	<include file="$(find robocare_navigation)/param/amcl.xml"/>	
+	
+	<!-- Move Base launch-->
+	<include file="$(find robocare_navigation)/param/move_base.xml"/>
+	
+	<node name="robocare_navigation" pkg="robocare_navigation" type="robocare_navigation" output="screen">
+		<param name="escape_dead_zone" value="true"/>
+		<param name="laser_frame" value="base_laser_link"/>		
+		<param name="range_max" value="5.0"/>
+		<param name="robot_radius" value="0.35"/>
+		<remap from="scan" to="base_scan"/>				
+	</node>
+</launch>
+

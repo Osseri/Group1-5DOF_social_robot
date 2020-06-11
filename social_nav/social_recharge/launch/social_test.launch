@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+
+<launch>
+        <node name="social_recharge_node" pkg="social_recharge" type="social_recharge_node" output="screen">
+                <param name="tarket_distance" value="0.4"/>
+                <param name="trans_threshold" value="0.03"/>
+                <param name="angle_threshold" value="5.0"/>
+                <param name="min_x" value="0.0"/>
+                <param name="max_x" value="2.0"/>
+                <param name="min_y" value="-1.0"/>
+                <param name="max_y" value="1.0"/>
+                <param name="leave_distance" value="0.7"/>
+        </node>
+
+        <node name="social_drive_node" pkg="social_recharge" type="social_drive_node" output="screen"/>
+        
+</launch>
+

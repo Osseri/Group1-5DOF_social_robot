@@ -1,0 +1,10 @@
+<launch>
+    <include file="$(find social_robot_arm_sdk)/launch/social_robot_arm_sdk_for_gazebo.launch" />
+    <!-- <include file="$(find social_robot_gazebo)/launch/social_robot_gazebo.launch" /> -->
+
+    <node name="player" pkg="social_motion_player" type="social_motion_player" />
+    <node name="avatar" pkg="social_avatar" type="social_avatar" />
+    <node name="tts" pkg="robocare_tts" type="robocare_tts" />
+    <node name="sound" pkg="robocare_sound" type="sound_node" />
+
+</launch>
