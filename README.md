@@ -46,6 +46,7 @@
 ### GAZEBO 
 
 $ roslaunch social_robot_arm_sdk social_robot_arm_sdk_for_gazebo.launch
+
 $ roslaunch social_robot_gazebo social_robot_gazebo.launch 
 
 재생버튼을 클릭해야 실행
@@ -101,7 +102,10 @@ $ rosrun social_robot_arm_gui social_robot_arm_gui
 
  
 $ roslaunch social_motion_player motion.launch
-$ rosservice call /social_motion_player/play_motion "file_name: '[motion_name]'
+
+$ rosservice call /social_motion_player/play_motion 
+
+"file_name: '[motion_name]'
 text: '[text to speech]'
 with_home: false"
 
