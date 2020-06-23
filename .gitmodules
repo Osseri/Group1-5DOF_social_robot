@@ -1,0 +1,3 @@
+[submodule "social_motion/social_avatar"]
+	path = social_motion/social_avatar
+	url = https://git.robocare.io/social/social_avatar.git
