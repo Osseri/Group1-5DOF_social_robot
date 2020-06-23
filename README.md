@@ -45,7 +45,7 @@
 
 ### GAZEBO 
 
-$ Install library
+$ Install library  
 sudo apt install ros-kinetic-ros-control ros-kinetic-ros-controllers ros-kinetic-gazebo-ros-control
 
 $ roslaunch social_robot_arm_sdk social_robot_arm_sdk_for_gazebo.launch
