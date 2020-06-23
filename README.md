@@ -6,6 +6,11 @@
 
 
 > ## Install Guide
+0. Install Library
+
+sudo apt install ros-kinetic-qt-build
+
+sudo apt install ros-kinetic-ros-control ros-kinetic-ros-controllers ros-kinetic-gazebo-ros-control
 
 1. Make workspace
 
@@ -33,6 +38,10 @@
    >
    > git clone https://git.robocare.io/social/5DOF_social_robot.git
    >
+   > git clone https://github.com/ros-drivers/urg_c.git
+   >
+   > git clone https://github.com/ros-perception/laser_proc.git
+   >
    > cd .. 
    >
    > catkin_make
@@ -44,9 +53,6 @@
 ## 2. MOTION
 
 ### GAZEBO 
-
-$ Install library  
-sudo apt install ros-kinetic-ros-control ros-kinetic-ros-controllers ros-kinetic-gazebo-ros-control
 
 $ roslaunch social_robot_arm_sdk social_robot_arm_sdk_for_gazebo.launch
 
