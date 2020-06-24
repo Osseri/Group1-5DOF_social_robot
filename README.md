@@ -6,11 +6,12 @@
 
 
 > ## Install Guide
+
 0. Install Library
 
-sudo apt install ros-kinetic-qt-build
-
-sudo apt install ros-kinetic-ros-control ros-kinetic-ros-controllers ros-kinetic-gazebo-ros-control
+   > sudo apt install ros-kinetic-qt-build
+   >
+   > sudo apt install ros-kinetic-ros-control ros-kinetic-ros-controllers ros-kinetic-gazebo-ros-control
 
 1. Make workspace
 
@@ -36,7 +37,7 @@ sudo apt install ros-kinetic-ros-control ros-kinetic-ros-controllers ros-kinetic
 
    > cd social_ws/src
    >
-   > git clone https://git.robocare.io/social/5DOF_social_robot.git
+   > git clone --recurse-submodules https://git.robocare.io/social/5DOF_social_robot.git
    >
    > git clone https://github.com/ros-drivers/urg_c.git
    >
